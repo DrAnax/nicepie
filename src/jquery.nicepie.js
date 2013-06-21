@@ -1,4 +1,13 @@
-(function($) {
+/*!jQuery nicepie*/
+/**
+ * Version: 1.0.0 (2013-06-21)
+ * Requires: jQuery v?
+ *
+ * Copyright (c) 2013 Takis Pournaras
+ * Under MIT license:
+ *  http://www.opensource.org/licenses/mit-license.php
+ */
+ (function($) {
 
 	$.fn.nicepie = function( options ) {
 
