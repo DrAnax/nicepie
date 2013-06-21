@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+
+	<meta charset="utf-8" />
+	<title>nicepie example</title>
+
+	<style>
+		body > div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		div div {
+			position: relative;
+			left: 0;
+			right: 0;
+			top: 0;
+			line-height: 2.5;
+			text-align: center;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div id="test1"><div>default options</div></div>
+	<div id="test2"><div>pale colors percent</div></div>
+	<div id="test3"><div>sword of 9999 truths</div></div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="js/jquery.nicepie.min.js"></script>
+	<script>
+		(function($) {
+			
+			$('#test1').nicepie();
+
+			$('#test2').nicepie({
+				radius     : 150,
+				backcolor  : '#008B8B',
+				piecolor   : '#ADFF2F',
+				fontcolor  : '#000',
+				end        : 63,
+				suffix     : ' %',
+				interval   : 80
+			});
+
+			$('#test3').nicepie({
+				radius       : 200,
+				backcolor    : '#5c4833',
+				piecolor     : '#2e3d18',
+				fontcolor    : '#c9b295',
+				font         : '30pt serif italic',
+				halign       : 'center',
+				valign       : 'middle',
+				show_percent : false,
+				start        : 1000,
+				end          : 9999,
+				step         : 231,
+				interval     : 60
+			});
+
+		}(jQuery));
+	</script>
+</body>
+
+</html>
