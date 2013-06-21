@@ -5,7 +5,7 @@ A jQuery plugin which makes pie drawing + animating easy as a pie
 
 ## Installation
 
-Include script the jQuery library:
+Include the script after the jQuery library:
 
     <script src="/path/to/jquery.nicepie.min.js"></script>
     
