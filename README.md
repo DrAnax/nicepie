@@ -9,6 +9,10 @@ Include the script after the jQuery library:
 
     <script src="/path/to/jquery.nicepie.min.js"></script>
     
+## Demo
+
+http://dranax.github.io/nicepie/
+
 ## Usage
 
 In your HTML document insert a div
