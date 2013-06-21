@@ -11,10 +11,11 @@
 			// styling
 			backcolor    : '#000',
 			piecolor     : '#666',
-			fontcolor    : '#aaa',
-			font         : '20pt Ubuntu italic'
+			fontcolor    : '#fff',
+			font         : '20pt Ubuntu italic',
 			halign       : 'center',
-			valign       : 'middle'
+			valign       : 'middle',
+			suffix       : '',
 			show_percent : true,
 
 			// numbers
@@ -23,9 +24,7 @@
 			step         : -1,
 
 			// other
-			interval     : 30,
-
-			complete
+			interval     : 10
 
 		}, options);
 
@@ -39,29 +38,29 @@
 		return this.each( function() { // chain the method
 
 			// add canvas to element
-			this.append('<canvas width="' + settings.radius * 2 + '" height="' + settings.radius * 2 + '"></canvas>');
+			$(this).append('<canvas width="' + settings.radius * 2 + '" height="' + settings.radius * 2 + '"></canvas>');
 
 			// get the canvas
-			canvas = this.find('canvas').getContext('2d');
+			canvas = $(this).find('canvas')[0].getContext('2d');
 
 			var current = settings.start;
 
 			// init drawing
-			this.draw_background();
-			this.draw_text(current);
+			draw_background();
+			draw_text(current);
 
 			// animate
 			var anim = setInterval(function() {
 
-				current = this.get_next_number(current);
+				current = get_next_number(current);
 
-				this.clear_canvas();
-				this.draw_background();
+				clear_canvas();
+				draw_background();
 
 				if (settings.show_percent)
-					this.draw_foreground(current);
+					draw_foreground(current);
 
-				this.draw_text(current);
+				draw_text(current);
 
 			}, settings.interval);
 
@@ -84,8 +83,8 @@
 			canvas.arc( // draw the circle
 				settings.radius, settings.radius, // center of circle
 				settings.radius, // radius
-				Math.PI, Math.PI * 2, // entire circle
-				true // clockwise
+				Math.PI * 0, Math.PI * 2, // entire circle
+				false
 				);
 
 			canvas.lineTo(settings.radius, settings.radius); // line back to center
@@ -108,7 +107,7 @@
 				settings.radius, // radius
 				Math.PI * 1.5, // start at the top
         		Math.PI * (1.5 - 2 * (100 - percent) / 100), // move to percent point
-        		false // anti-clockwise 
+        		true // anti-clockwise 
         		);
 
 			canvas.lineTo(settings.radius, settings.radius); // line back to the center
@@ -127,7 +126,7 @@
 			// draw the text
 			canvas.font = settings.font;
 			canvas.textAlign = settings.halign;
-			canvas.textBaseAlign = settings.valign;
+			canvas.textBaseline = settings.valign;
 			canvas.fillStyle = settings.fontcolor;
 			canvas.fillText(text, settings.radius, settings.radius);
 
@@ -156,7 +155,7 @@
 				text =text.replace(rgx, '$1' + sep + '$2');
 			}
 
-			return text;
+			return text + settings.suffix;
 
 		}
 
